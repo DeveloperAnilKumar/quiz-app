@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Js Quiz Application</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Node Js Quiz</h1>
+      <form id="quizForm">
+        <ul id="quizQuestions"></ul>
+        <button type="submit">submit</button>
+      </form>
+
+      <div id="quizResult">
+        <h2>Quiz Result</h2>
+        <p>Your Score : <span id="score"></span></p>
+        <h3>Feedback</h3>
+        <ul id="feedback"></ul>
+      </div>
+    </div>
+
+    <script>
+      fetch("http://localhost:4000/quiz")
+        .then((response) => response.json())
+        .then((questions) => {
+          const quizQuestions = document.getElementById("quizQuestions");
+
+          questions.forEach((question, index) => {
+            const li = document.createElement("li");
+
+            li.innerHTML = `
+                <strong> Q.${index + 1}   ${question.question} </strong> <br>
+                <label> <input type=radio name="question${index}" value="A" > ${
+              question.options[0]
+            } </label> <br>
+                <label> <input type=radio name="question${index}" value="B" > ${
+              question.options[1]
+            } </label> <br>
+                <label> <input type=radio name="question${index}" value="C" > ${
+              question.options[2]
+            } </label> <br>
+                `;
+            quizQuestions.appendChild(li);
+          });
+        });
+
+      document.getElementById("quizForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        const answers = [];
+
+        for (const value of formData.values()) {
+          answers.push(value);
+        }
+
+        fetch("http://localhost:4000/quiz/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ answers }),
+        })
+          .then((response) => response.json())
+
+          .then((data) => {
+            const quizResult = document.getElementById("quizResult");
+            const quizForm = document.getElementById("quizForm");
+            const Feedback = document.getElementById("feedback");
+            const score = document.getElementById("score");
+
+            quizForm.style.display = "none";
+            quizResult.style.display = "block";
+
+            score.textContent = data.score;
+
+            Feedback.innerHTML = data.feedback
+              .map(
+                (item) =>
+                  `<li class="${item.correct ? "correct" : "incorrect"}">
+                ${item.question} : ${
+                    item.correct
+                      ? "Correct"
+                      : `Incorrect. Correct answer : ${item.correctAnswer}`
+                  }
+
+                </li>
+                `
+              )
+              .join("");
+          });
+      });
+    </script>
+  </body>
+</html>

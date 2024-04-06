@@ -1,0 +1,55 @@
+{
+    "questions": [
+      {
+        "question": "What is Node.js?",
+        "options": ["A. A web browser", "B. A server-side runtime environment", "C. A front-end framework"],
+        "correctAnswer": "B"
+      },
+      {
+        "question": "What does npm stand for?",
+        "options": ["A. Node Package Manager", "B. Node Project Manager", "C. New Package Manager"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "Which event loop is used in Node.js?",
+        "options": ["A. Single-threaded", "B. Multi-threaded", "C. Asynchronous"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "What is a callback function in Node.js?",
+        "options": ["A. A function passed as an argument to another function", "B. A function used for rendering HTML", "C. A function that returns a promise"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "What is the core module for building HTTP servers in Node.js?",
+        "options": ["A. fs", "B. http", "C. net"],
+        "correctAnswer": "B"
+      },
+      {
+        "question": "What is the purpose of the 'require' function in Node.js?",
+        "options": ["A. To include external libraries", "B. To define variables", "C. To perform arithmetic operations"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "What is the purpose of the 'module.exports' object in Node.js?",
+        "options": ["A. To import modules", "B. To export variables, functions, and objects from a module", "C. To create global variables"],
+        "correctAnswer": "B"
+      },
+      {
+        "question": "Which of the following is NOT a built-in module in Node.js?",
+        "options": ["A. fs", "B. path", "C. express"],
+        "correctAnswer": "C"
+      },
+      {
+        "question": "What does the 'process' object provide access to in Node.js?",
+        "options": ["A. Process-related information", "B. File system operations", "C. HTTP requests"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "What does the 'fs' module provide in Node.js?",
+        "options": ["A. Functionality for working with file systems", "B. Functions for mathematical operations", "C. A front-end framework"],
+        "correctAnswer": "A"
+      }
+    ]
+  }
+  
