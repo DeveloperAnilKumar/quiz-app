@@ -8,13 +8,14 @@ To get started with the quiz application, follow these steps:
 
 1. Clone this repository to your local machine:
 
-git clone <repository-url>
+git clone https://github.com/DeveloperAnilKumar/quiz-app.git
 
 2. install dependencies using npm:
 
    npm install
 
 3. Start the server:
+
    node app.js
 
    Open your web browser and navigate to http://localhost:4000 to access the quiz application.
